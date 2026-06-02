@@ -1,0 +1,547 @@
+# Instincts generated from https://github.com/Kobe-love/nginx
+# Generated: 2026-06-02T22:31:26.310Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: nginx-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Commit Length
+
+## Action
+
+Keep commit messages concise (~44 characters)
+
+## Evidence
+
+- Average commit message length: 44 chars
+- Based on 100 commits
+
+---
+id: nginx-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Naming Files
+
+## Action
+
+Use snake_case naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: snake_case
+
+---
+id: nginx-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: nginx-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: nginx-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: nginx-workflow-ssl-feature-or-refactor
+trigger: "when doing ssl feature or refactor"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Workflow Ssl Feature Or Refactor
+
+## Action
+
+Follow the ssl-feature-or-refactor workflow:
+1. Edit or add implementation in src/event/ngx_event_openssl.c
+2. Edit or add headers in src/event/ngx_event_openssl.h
+3. Edit or add implementation in src/event/ngx_event_openssl_cache.c (if related to caching)
+4. Edit SSL-related modules in src/http/modules/ngx_http_ssl_module.c, src/mail/ngx_mail_ssl_module.c, or src/stream/ngx_stream_ssl_module.c as needed
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: src/event/ngx_event_openssl.c, src/event/ngx_event_openssl.h, src/event/ngx_event_openssl_cache.c
+
+---
+id: nginx-workflow-release-version-bump
+trigger: "when doing release version bump"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Workflow Release Version Bump
+
+## Action
+
+Follow the release-version-bump workflow:
+1. Update release notes in docs/xml/nginx/changes.xml
+2. Bump version number in src/core/nginx.h
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: docs/xml/nginx/changes.xml, src/core/nginx.h
+
+---
+id: nginx-workflow-upstream-module-enhancement
+trigger: "when doing upstream module enhancement"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Workflow Upstream Module Enhancement
+
+## Action
+
+Follow the upstream-module-enhancement workflow:
+1. Edit or add code in src/http/modules/ngx_http_upstream_*.c and src/http/ngx_http_upstream*.c/h
+2. Edit or add code in src/stream/ngx_stream_upstream*.c/h and related modules
+3. Update zone modules if needed (e.g., ngx_http_upstream_zone_module.c, ngx_stream_upstream_zone_module.c)
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: src/http/modules/ngx_http_upstream_hash_module.c, src/http/modules/ngx_http_upstream_ip_hash_module.c, src/http/modules/ngx_http_upstream_least_conn_module.c
+
+---
+id: nginx-workflow-mp4-module-bugfix
+trigger: "when doing mp4 module bugfix"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Workflow Mp4 Module Bugfix
+
+## Action
+
+Follow the mp4-module-bugfix workflow:
+1. Edit src/http/modules/ngx_http_mp4_module.c to address bug or edge case
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: src/http/modules/ngx_http_mp4_module.c
+
+---
+id: nginx-workflow-add-or-update-github-templates-or-workflows
+trigger: "when doing add or update github templates or workflows"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Workflow Add Or Update Github Templates Or Workflows
+
+## Action
+
+Follow the add-or-update-github-templates-or-workflows workflow:
+1. Add or edit files in .github/ISSUE_TEMPLATE/
+2. Add or edit .github/pull_request_template.md
+3. Add or edit .github/workflows/*.yml
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: .github/ISSUE_TEMPLATE/bug_report.md, .github/ISSUE_TEMPLATE/feature_request.md, .github/pull_request_template.md
+
+---
+id: nginx-workflow-security-policy-update
+trigger: "when doing security policy update"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/Kobe-love/nginx
+---
+
+# Nginx Workflow Security Policy Update
+
+## Action
+
+Follow the security-policy-update workflow:
+1. Edit SECURITY.md with new or clarified policy details
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: SECURITY.md
+
+---
+id: nginx-instinct-file-naming
+trigger: "When creating a new source or header file"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct File Naming
+
+## Action
+
+Name the file using snake_case
+
+## Evidence
+
+- Pattern in src/core, src/event, src/http/modules (e.g., ngx_event_openssl.c, ngx_http_mp4_module.c)
+
+---
+id: nginx-instinct-function-naming
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Function Naming
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in src/event/ngx_event_openssl.c
+- Pattern in src/http/ngx_http_upstream.c
+
+---
+id: nginx-instinct-class-naming
+trigger: "When defining a new class or struct"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Class Naming
+
+## Action
+
+Name the class or struct using PascalCase
+
+## Evidence
+
+- Pattern in src/core/nginx.h
+- Pattern in src/http/ngx_http_upstream.h
+
+---
+id: nginx-instinct-constant-naming
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Constant Naming
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in src/core/nginx.h
+- Pattern in src/event/ngx_event_openssl.h
+
+---
+id: nginx-instinct-import-style
+trigger: "When importing modules or headers"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Import Style
+
+## Action
+
+Use relative imports
+
+## Evidence
+
+- Pattern in #include statements in src/event/ngx_event_openssl.c
+- Pattern in src/http/ngx_http_upstream.c
+
+---
+id: nginx-instinct-export-style
+trigger: "When exporting functions or variables"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Export Style
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in header files like src/http/ngx_http_upstream.h
+
+---
+id: nginx-instinct-git-commit-prefix
+trigger: "When writing a commit message"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Git Commit Prefix
+
+## Action
+
+Start the commit message with a relevant prefix (e.g., ssl, quic, upstream, configure, core, mp4) followed by a colon and a brief description
+
+## Evidence
+
+- Seen in commits: 'SSL: optional ssl_client_certificate for ssl_verify_client.', 'QUIC: prevent deleted stream frame retransmissions.'
+
+---
+id: nginx-instinct-git-commit-length
+trigger: "When writing a commit message"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Git Commit Length
+
+## Action
+
+Keep the commit message concise, around 40-50 characters
+
+## Evidence
+
+- Average commit length: 44
+- Seen in commit examples
+
+---
+id: nginx-instinct-git-commit-format
+trigger: "When writing a commit message"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Git Commit Format
+
+## Action
+
+Use a single-line summary with a capitalized prefix and no period at the end unless it's a full sentence
+
+## Evidence
+
+- Seen in commit examples: 'Proxy: proxy_pass_trailers directive.'
+- Pattern in commit history
+
+---
+id: nginx-instinct-ssl-feature-or-refactor
+trigger: "When someone wants to add, refactor, or fix SSL-related features (e.g., protocol support, certificate caching, error handling) in nginx"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Ssl Feature Or Refactor
+
+## Action
+
+Edit or add implementation in src/event/ngx_event_openssl.c, update headers in src/event/ngx_event_openssl.h, update src/event/ngx_event_openssl_cache.c if caching is involved, and edit SSL-related modules in src/http/modules/ngx_http_ssl_module.c, src/mail/ngx_mail_ssl_module.c, or src/stream/ngx_stream_ssl_module.c as needed
+
+## Evidence
+
+- Workflow: ssl-feature-or-refactor
+- Seen in commits with 'ssl' prefix
+- Pattern in files: src/event/ngx_event_openssl.c, src/http/modules/ngx_http_ssl_module.c
+
+---
+id: nginx-instinct-release-version-bump
+trigger: "When someone wants to release a new version of nginx"
+confidence: 0.99
+domain: workflow
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Release Version Bump
+
+## Action
+
+Update release notes in docs/xml/nginx/changes.xml and bump version number in src/core/nginx.h
+
+## Evidence
+
+- Workflow: release-version-bump
+- Pattern in files: docs/xml/nginx/changes.xml, src/core/nginx.h
+
+---
+id: nginx-instinct-upstream-module-enhancement
+trigger: "When someone wants to add or improve upstream server handling (e.g., DNS, SRV records, config reload) in nginx"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Upstream Module Enhancement
+
+## Action
+
+Edit or add code in src/http/modules/ngx_http_upstream_*.c and src/http/ngx_http_upstream*.c/h, edit or add code in src/stream/ngx_stream_upstream*.c/h and related modules, and update zone modules if needed
+
+## Evidence
+
+- Workflow: upstream-module-enhancement
+- Seen in commits with 'upstream' prefix
+- Pattern in files: src/http/ngx_http_upstream.c, src/stream/ngx_stream_upstream.c
+
+---
+id: nginx-instinct-mp4-module-bugfix
+trigger: "When someone wants to fix a bug in MP4 chunk/atom handling"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Mp4 Module Bugfix
+
+## Action
+
+Edit src/http/modules/ngx_http_mp4_module.c to address bug or edge case
+
+## Evidence
+
+- Workflow: mp4-module-bugfix
+- Seen in commits with 'mp4' prefix
+- Pattern in file: src/http/modules/ngx_http_mp4_module.c
+
+---
+id: nginx-instinct-add-or-update-github-templates-or-workflows
+trigger: "When someone wants to add or update GitHub templates or CI workflows"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Add Or Update Github Templates Or Workflows
+
+## Action
+
+Add or edit files in .github/ISSUE_TEMPLATE/, .github/pull_request_template.md, and .github/workflows/*.yml
+
+## Evidence
+
+- Workflow: add-or-update-github-templates-or-workflows
+- Seen in commits: 'Added GitHub templates.', 'Added CI based on GitHub Actions.'
+- Pattern in files: .github/ISSUE_TEMPLATE/bug_report.md, .github/workflows/buildbot.yml
+
+---
+id: nginx-instinct-security-policy-update
+trigger: "When someone wants to update the project's security policy"
+confidence: 0.85
+domain: workflow
+source: repo-analysis
+source_repo: Kobe-love/nginx
+---
+
+# Nginx Instinct Security Policy Update
+
+## Action
+
+Edit SECURITY.md with new or clarified policy details
+
+## Evidence
+
+- Workflow: security-policy-update
+- Pattern in file: SECURITY.md
+
